@@ -10,4 +10,4 @@ Esta aplicación web se desarrolla bajo una arquitectura de microservicios usand
 ## Instalación
 Clonar el proyecto en su repositorio local:
 
-´git clone https://github.com/AnankeCode/edv.git´
+    git clone https://github.com/AnankeCode/edv.git
