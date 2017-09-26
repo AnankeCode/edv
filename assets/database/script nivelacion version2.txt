@@ -1,0 +1,164 @@
+-- Generado por Oracle SQL Developer Data Modeler 4.1.5.907
+--   en:        2017-09-25 20:23:12 CEST
+--   sitio:      Oracle Database 12c
+--   tipo:      Oracle Database 12c
+
+
+
+
+CREATE TABLE EVALUACION
+  (
+    eva_id              NUMBER (2) NOT NULL ,
+    eva_pregunta        VARCHAR2 (100) NOT NULL ,
+    eva_opcion          NUMBER ,
+    eva_detalle         VARCHAR2 (100) ,
+    USURIOS_usu_correo  VARCHAR2 (50) NOT NULL ,
+    USURIOS_usu_celular NUMBER (20) NOT NULL ,
+    usu_tipoid          VARCHAR2 (3) NOT NULL ,
+    usu_numid           VARCHAR2 (15) NOT NULL
+  ) ;
+CREATE UNIQUE INDEX EVALUACION__IDX ON EVALUACION
+  (
+    USURIOS_usu_correo ASC , USURIOS_usu_celular ASC
+  )
+  ;
+CREATE UNIQUE INDEX EVALUACION__IDX ON EVALUACION
+  (
+    usu_tipoid ASC , usu_numid ASC
+  )
+  ;
+ALTER TABLE EVALUACION ADD CONSTRAINT EVALUACION_PK PRIMARY KEY ( eva_pregunta, eva_id ) ;
+
+
+CREATE TABLE EXPECTATIVA
+  (
+    exp_id              NUMBER NOT NULL ,
+    exp_pregunta        VARCHAR2 (100) NOT NULL ,
+    exp_opcion          NUMBER (2) ,
+    USURIOS_usu_correo  VARCHAR2 (50) NOT NULL ,
+    USURIOS_usu_celular NUMBER (20) NOT NULL ,
+    usu_tipoid          VARCHAR2 (3) NOT NULL ,
+    usu_numid           VARCHAR2 (15) NOT NULL
+  ) ;
+CREATE UNIQUE INDEX EXPECTATIVA__IDX ON EXPECTATIVA
+  (
+    USURIOS_usu_correo ASC , USURIOS_usu_celular ASC
+  )
+  ;
+CREATE UNIQUE INDEX EXPECTATIVA__IDX ON EXPECTATIVA
+  (
+    usu_tipoid ASC , usu_numid ASC
+  )
+  ;
+ALTER TABLE EXPECTATIVA ADD CONSTRAINT EXPECTATIVA_PK PRIMARY KEY ( exp_id, exp_pregunta ) ;
+
+
+CREATE TABLE NIVELACION
+  (
+    niv_id              NUMBER (3) NOT NULL ,
+    niv_pregunta        VARCHAR2 (20) NOT NULL ,
+    niv_opcion          VARCHAR2 (100) ,
+    niv_detalle         VARCHAR2 (100) ,
+    USURIOS_usu_correo  VARCHAR2 (50) NOT NULL ,
+    USURIOS_usu_celular NUMBER (20) NOT NULL ,
+    usu_tipoid          VARCHAR2 (3) NOT NULL ,
+    usu_numid           VARCHAR2 (15) NOT NULL
+  ) ;
+CREATE UNIQUE INDEX NIVELACION__IDX ON NIVELACION
+  (
+    USURIOS_usu_correo ASC , USURIOS_usu_celular ASC
+  )
+  ;
+CREATE UNIQUE INDEX NIVELACION__IDX ON NIVELACION
+  (
+    usu_tipoid ASC , usu_numid ASC
+  )
+  ;
+ALTER TABLE NIVELACION ADD CONSTRAINT NIVELACION_PK PRIMARY KEY ( niv_pregunta, niv_id ) ;
+
+
+CREATE TABLE RECOMENDACION
+  (
+    rec_id              NUMBER (2) NOT NULL ,
+    rec_detalle         VARCHAR2 (100) NOT NULL ,
+    USURIOS_usu_correo  VARCHAR2 (50) NOT NULL ,
+    USURIOS_usu_celular NUMBER (20) NOT NULL ,
+    usu_tipoid          VARCHAR2 (3) NOT NULL ,
+    usu_numid           VARCHAR2 (15) NOT NULL
+  ) ;
+CREATE UNIQUE INDEX RECOMENDACION__IDX ON RECOMENDACION
+  (
+    USURIOS_usu_correo ASC , USURIOS_usu_celular ASC
+  )
+  ;
+CREATE UNIQUE INDEX RECOMENDACION__IDX ON RECOMENDACION
+  (
+    usu_tipoid ASC , usu_numid ASC
+  )
+  ;
+ALTER TABLE RECOMENDACION ADD CONSTRAINT RECOMENDACION_PK PRIMARY KEY ( rec_id, rec_detalle ) ;
+
+
+CREATE TABLE USUARIOS
+  (
+    usu_nombre   VARCHAR2 (50) ,
+    usu_correo   VARCHAR2 (50) NOT NULL ,
+    usu_telefono NUMBER (20) ,
+    usu_celular  NUMBER (20) ,
+    usu_tipoid   VARCHAR2 (3) NOT NULL ,
+    usu_numid    VARCHAR2 (15) NOT NULL
+  ) ;
+ALTER TABLE USUARIOS ADD CONSTRAINT USURIOS_PK PRIMARY KEY ( usu_tipoid, usu_numid ) ;
+
+
+ALTER TABLE EVALUACION ADD CONSTRAINT EVALUACION_USURIOS_FK FOREIGN KEY ( usu_tipoid, usu_numid ) REFERENCES USUARIOS ( usu_tipoid, usu_numid ) ;
+
+ALTER TABLE EXPECTATIVA ADD CONSTRAINT EXPECTATIVA_USURIOS_FK FOREIGN KEY ( usu_tipoid, usu_numid ) REFERENCES USUARIOS ( usu_tipoid, usu_numid ) ;
+
+ALTER TABLE NIVELACION ADD CONSTRAINT NIVELACION_USURIOS_FK FOREIGN KEY ( usu_tipoid, usu_numid ) REFERENCES USUARIOS ( usu_tipoid, usu_numid ) ;
+
+ALTER TABLE RECOMENDACION ADD CONSTRAINT RECOMENDACION_USURIOS_FK FOREIGN KEY ( usu_tipoid, usu_numid ) REFERENCES USUARIOS ( usu_tipoid, usu_numid ) ;
+
+
+-- Informe de Resumen de Oracle SQL Developer Data Modeler: 
+-- 
+-- CREATE TABLE                             5
+-- CREATE INDEX                             8
+-- ALTER TABLE                              9
+-- CREATE VIEW                              0
+-- ALTER VIEW                               0
+-- CREATE PACKAGE                           0
+-- CREATE PACKAGE BODY                      0
+-- CREATE PROCEDURE                         0
+-- CREATE FUNCTION                          0
+-- CREATE TRIGGER                           0
+-- ALTER TRIGGER                            0
+-- CREATE COLLECTION TYPE                   0
+-- CREATE STRUCTURED TYPE                   0
+-- CREATE STRUCTURED TYPE BODY              0
+-- CREATE CLUSTER                           0
+-- CREATE CONTEXT                           0
+-- CREATE DATABASE                          0
+-- CREATE DIMENSION                         0
+-- CREATE DIRECTORY                         0
+-- CREATE DISK GROUP                        0
+-- CREATE ROLE                              0
+-- CREATE ROLLBACK SEGMENT                  0
+-- CREATE SEQUENCE                          0
+-- CREATE MATERIALIZED VIEW                 0
+-- CREATE SYNONYM                           0
+-- CREATE TABLESPACE                        0
+-- CREATE USER                              0
+-- 
+-- DROP TABLESPACE                          0
+-- DROP DATABASE                            0
+-- 
+-- REDACTION POLICY                         0
+-- TSDP POLICY                              0
+-- 
+-- ORDS DROP SCHEMA                         0
+-- ORDS ENABLE SCHEMA                       0
+-- ORDS ENABLE OBJECT                       0
+-- 
+-- ERRORS                                   0
+-- WARNINGS                                 0
