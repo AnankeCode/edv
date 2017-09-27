@@ -21,18 +21,18 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 /**
  * The accounts Spring configuration.
  * 
- * @author Paul Chapman
+ * @author SantiPurdy
  */
 @Configuration
 @ComponentScan
 @EntityScan("io.pivotal.microservices.accounts")
 @EnableJpaRepositories("io.pivotal.microservices.accounts")
 @PropertySource("classpath:db-config.properties")
-public class UsuariosConfiguration {
+public class NivelacionConfiguration {
 
 	protected Logger logger;
 
-	public UsuariosConfiguration() {
+	public NivelacionConfiguration() {
 		logger = Logger.getLogger(getClass().getName());
 	}
 
@@ -46,23 +46,23 @@ public class UsuariosConfiguration {
 
 		// Create an in-memory H2 relational database containing some demo
 		// accounts.
-		DataSource dataSource = (new EmbeddedDatabaseBuilder()).addScript("classpath:testdb/Usuarios.sql")
-				.addScript("classpath:testdb/Usuarios.sql").build();
+		DataSource dataSource = (new EmbeddedDatabaseBuilder()).addScript("classpath:testdb/schema.sql")
+				.addScript("classpath:testdb/data.sql").build();
 
 		logger.info("dataSource = " + dataSource);
 
 		// Sanity check
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		List<Map<String, Object>> accounts = jdbcTemplate.queryForList("SELECT number FROM Usuarios");
+		List<Map<String, Object>> accounts = jdbcTemplate.queryForList("SELECT number FROM Nivelacion");
 		logger.info("System has " + accounts.size() + " accounts");
 
 		// Populate with random balances
 		Random rand = new Random();
 
-		for (Map<String, Object> item : accounts) {
+		for (Map<String, Object> item : Nivelacion) {
 			String number = (String) item.get("number");
 			BigDecimal balance = new BigDecimal(rand.nextInt(10000000) / 100.0).setScale(2, BigDecimal.ROUND_HALF_UP);
-			jdbcTemplate.update("UPDATE Usuarios SET balance = ? WHERE number = ?", balance, number);
+			jdbcTemplate.update("UPDATE Nivelacion SET balance = ? WHERE number = ?", balance, number);
 		}
 
 		return dataSource;
