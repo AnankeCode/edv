@@ -23,9 +23,6 @@ public class Recomendacion implements Serializable {
 	public static Long nextId = 0L;
 
 	@Id
-	protected String usu_tipoid;
-
-	protected int usu_numid;
 	
 	protected int rec_id;
 
@@ -33,7 +30,10 @@ public class Recomendacion implements Serializable {
 
 	@Column(name = "Recomendacion")
 	protected String rec_detalle;
+    protected String usu_tipoid;
 
+	protected int usu_numid;
+	
 	
 
 	/**

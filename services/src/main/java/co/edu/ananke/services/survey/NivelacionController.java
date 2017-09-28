@@ -20,7 +20,7 @@ public class NivelacionController {
 
 	protected Logger logger = Logger.getLogger(AccountsController.class
 			.getName());
-	protected NivelacionRepository nivelacionRepository;
+	protected NivelacionesRepository nivelacionesRepository;
 
 	/**
 	 * Create an instance plugging in the respository of Accounts.
@@ -29,11 +29,11 @@ public class NivelacionController {
 	 *            An account repository implementation.
 	 */
 	@Autowired
-	public NivelacionController(NivelacionRepository nivelacionRepository) {
-		this.nivelacionRepository = nivelacionRepository;
+	public NivelacionController(NivelacionesRepository nivelacionesRepository) {
+		this.nivelacionesRepository = nivelacionesRepository;
 
 		logger.info("AccountRepository says system has "
-				+ nivelacionRepository.countNivelacion() + " accounts");
+				+ nivelacionesRepository.countNivelacion() + " nivelaciones");
 	}
 
 	/**
@@ -45,15 +45,15 @@ public class NivelacionController {
 	 * @throws AccountNotFoundException
 	 *             If the number is not recognised.
 	 */
-	@RequestMapping("/Nivelacion/{accountNumber}")
-	public Nivelacion byNumber(@PathVariable("accountNumber") String accountNumber) {
+	@RequestMapping("/Nivelacion/{Nivelacionusu_numid}")
+	public Nivelacion byusu_numid(@PathVariable("nivelacionusu_numid") String nivelacionusu_numid) {
 
-		logger.info("accounts-service byNumber() invoked: " + accountNumber);
-		Nivelacion nivelacion = accountRepository.findByNumber(accountNumber);
-		logger.info("accounts-service byNumber() found: " + account);
+		logger.info("nivelacion-service byusu_numid() invoked: " + Nivelacionusu_numid);
+		Nivelacion nivelacion = NivelacionRepository.findByusu_numid(nivelacionusu_numid);
+		logger.info("nivelacion-service byusu_numid() found: " + nivelaciones);
 
 		if (Nivelacion == null)
-			throw new AccountNotFoundException(accountNumber);
+			throw new NivelacionNotFoundException(Nivelacionusu_numid);
 		else {
 			return Nivelacion;
 		}
@@ -69,18 +69,18 @@ public class NivelacionController {
 	 * @throws AccountNotFoundException
 	 *             If there are no matches at all.
 	 */
-	@RequestMapping("/accounts/owner/{name}")
-	public List<Account> byOwner(@PathVariable("name") String partialName) {
-		logger.info("accounts-service byOwner() invoked: "
-				+ accountRepository.getClass().getName() + " for "
-				+ partialName);
+	@RequestMapping("/nivelacion/usu_tipoid/{name}")
+	public List<Nivelacion> byusu_tipoid(@PathVariable("name") String partialusu_tipoid) {
+		logger.info("accounts-service byusu_tipoid() invoked: "
+				+ nivelacionRepository.getClass().getName() + " for "
+				+ partialusu_tipoid);
 
 		List<Nivelacion> nivelacion = nivelacionRepository
-				.findByOwnerContainingIgnoreCase(partialName);
-		logger.info("accounts-service byOwner() found: " + nivelacion);
+				.findByusu_tipoidContainingIgnoreCase(partialusu_tipoid);
+		logger.info("nivelacion-service byusu_tipoid() found: " + nivelacion);
 
 		if (Nivelacion == null || accounts.size() == 0)
-			throw new AccountNotFoundException(partialName);
+			throw new NivelacionNotFoundException(partialusu_tipoid);
 		else {
 			return Nivelacion;
 		}

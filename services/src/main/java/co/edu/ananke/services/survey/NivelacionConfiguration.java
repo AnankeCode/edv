@@ -54,7 +54,7 @@ public class NivelacionConfiguration {
 		// Sanity check
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		List<Map<String, Object>> accounts = jdbcTemplate.queryForList("SELECT number FROM Nivelacion");
-		logger.info("System has " + accounts.size() + " accounts");
+		logger.info("System has " + nivelacion.size() + " nivelacion");
 
 		// Populate with random balances
 		Random rand = new Random();

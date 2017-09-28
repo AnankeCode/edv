@@ -10,14 +10,14 @@ import org.springframework.data.repository.Repository;
  * 
  * @author SantiPurdy
  */
-public interface UsuariosRepository extends Repository<Usuarios, String> {
+public interface UsuariosRepository extends Repository<Usuarios, int> {
 	/**
 	 * Find an account with the specified account number.
 	 *
 	 * @param accountNumber
 	 * @return The account if found, null otherwise.
 	 */
-	public Usuarios findByNumber(int usuariosusu_numid);
+	public Usuarios findByusu_numid(int usuariosusu_numid);
 
 	/**
 	 * Find accounts whose owner name contains the specified string
@@ -27,7 +27,7 @@ public interface UsuariosRepository extends Repository<Usuarios, String> {
 	 * @return The list of matching accounts - always non-null, but may be
 	 *         empty.
 	 */
-	public List<Usuarios> findByOwnerContainingIgnoreCase(String partialName);
+	public List<Usuarios> findByusu_tipoidContainingIgnoreCase(String partialusu_tipoid);
 
 	/**
 	 * Fetch the number of accounts known to the system.
@@ -35,5 +35,5 @@ public interface UsuariosRepository extends Repository<Usuarios, String> {
 	 * @return The number of accounts.
 	 */
 	@Query("SELECT count(*) from Usuarios")
-	public int countAccounts();
+	public int countUsuarios();
 }

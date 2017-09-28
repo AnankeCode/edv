@@ -10,14 +10,14 @@ import org.springframework.data.repository.Repository;
  * 
  * @author SantiPurdy
  */
-public interface EvaluacionRepository extends Repository<Evaluacion, string> {
+public interface EvaluacionRepository extends Repository<Usuarios, int> {
 	/**
 	 * Find an account with the specified account number.
 	 *
 	 * @param accountNumber
 	 * @return The account if found, null otherwise.
 	 */
-	public Evaluacion findByNumber(String accountNumber);
+	public Evaluacion findByusu_numid(int Evaluacionusu_numid);
 
 	/**
 	 * Find accounts whose owner name contains the specified string
@@ -27,13 +27,13 @@ public interface EvaluacionRepository extends Repository<Evaluacion, string> {
 	 * @return The list of matching accounts - always non-null, but may be
 	 *         empty.
 	 */
-	public List<Evaluacion> findByOwnerContainingIgnoreCase(String partialName);
+	public List<Usuarios> findByusu_tipoidContainingIgnoreCase(String partialusu_tipoid);
 
 	/**
 	 * Fetch the number of accounts known to the system.
 	 * 
 	 * @return The number of accounts.
 	 */
-	@Query("SELECT count(*) from Account")
-	public int countAccounts();
+	@Query("SELECT count(*) from  Usuarios")
+	public int countEvaluaciones();
 }

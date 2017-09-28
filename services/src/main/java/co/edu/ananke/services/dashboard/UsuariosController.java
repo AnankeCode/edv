@@ -17,7 +17,7 @@ import io.pivotal.microservices.exceptions.AccountNotFoundException;
 @RestController
 public class UsuariosController {
 
-	protected Logger logger = Logger.getLogger(UsuariosController.class
+	protected Logger logger = Logger.getLogger(UsuarioController.class
 			.getName());
 	protected UsuariosRepository usuariosRepository;
 
@@ -28,7 +28,7 @@ public class UsuariosController {
 	 *            An account repository implementation.
 	 */
 	@Autowired
-	public UsuariosController(UsuariosRepository usuariosRepository) {
+	public UsuarioController(UsuariosRepository usuariosRepository) {
 		this.usuariosRepository = usuariosRepository;
 
 		logger.info("AccountRepository says system has "
@@ -44,12 +44,12 @@ public class UsuariosController {
 	 * @throws AccountNotFoundException
 	 *             If the number is not recognised.
 	 */
-	@RequestMapping("/Usuarios/{ usuariosusu_numid}")
-	public Account byNumber(@PathVariable(" usuariosusu_numid") String accountNumber) {
+	@RequestMapping("/usuario/{ usuariosusu_numid}")
+	public Account byNumber(@PathVariable(" usuariosusu_numid") String usu_tipoid) {
 
-		logger.info("Usuarios-service byNumber() invoked: " +  usuariosusu_numid);
-        Usuarios usuarios = usuariosRepository.findByNumber( usuariosusu_numid);
-		logger.info("Usuarios-service byNumber() found: " + Usuarios);
+		logger.info("Usuarios-service byusu_numid() invoked: " +  usuariosusu_numid);
+        Usuarios usuarios = usuariosRepository.findByusu_numid( usuariosusu_numid);
+		logger.info("Usuarios-service byusu_numid() found: " + usuarios);
 
 		if (usuarios == null)
 			throw new UsuariosNotFoundException( usuariosusu_numid);
@@ -68,18 +68,18 @@ public class UsuariosController {
 	 * @throws AccountNotFoundException
 	 *             If there are no matches at all.
 	 */
-	@RequestMapping("/accounts/owner/{name}")
+	@RequestMapping("/usuario/usu_tipoid/{name}")
 	public List<Usuarios> byUsuarios(@PathVariable("name") String partialName) {
 		logger.info("accounts-service byOwner() invoked: "
 				+ UsuariosRepository.getClass().getName() + " for "
-				+ partialName);
+				+ partialusu_tipoid);
 
 		List<Usuarios> Usuarios = usuariosRepository
 				.findByOwnerContainingIgnoreCase(partialName);
-		logger.info("accounts-service byOwner() found: " + accounts);
+		logger.info("usuario-service byOwner() found: " + usuario);
 
-		if (Usuarios == null || usuarios.size() == 0)
-			throw new AccountNotFoundException(partialName);
+		if (usuarios == null || usuarios.size() == 0)
+			throw new AccountNotFoundException(partialusu_tipoid);
 		else {
 			return usuarios;
 		}

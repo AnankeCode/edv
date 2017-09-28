@@ -23,15 +23,18 @@ public class Nivelacion implements Serializable {
 	public static Long nextId = 0L;
 
 	@Id
-	protected String usu_tipoid;
-
-	protected int usu_numid;
+	
 	
 	protected String niv_id;
 
 	protected int niv_pregunta;
+	
 	@Column(name = "Nivelacion")
-	 private int niv_opcion;
+    protected String usu_tipoid;
+
+	protected int usu_numid;	
+
+	private int niv_opcion;
     private String niv_detalle;
 	/**
 	 * This is a very simple, and non-scalable solution to generating unique
@@ -49,14 +52,17 @@ public class Nivelacion implements Serializable {
 	/**
 	 * Default constructor for JPA only.
 	 */
-	protected Account() {
+	protected Nivelacion
+	
+	() {
 		balance = BigDecimal.ZERO;
 	}
 
-	public Account(String eva_pregunta, int niv_opcion, String niv_detalle) {
+	public Nivelacion(String niv_pregunta, int niv_opcion, String niv_detalle) {
 		id = getNextId();
 		this.niv_pregunta = pregunta;
 		this.niv_opcion= opcion;
+		this.niv_detalle= detalle;
 		balance = BigDecimal.ZERO;
 	}
 

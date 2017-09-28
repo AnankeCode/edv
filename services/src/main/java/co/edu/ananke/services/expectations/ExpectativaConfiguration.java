@@ -28,11 +28,11 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 @EntityScan("io.pivotal.microservices.accounts")
 @EnableJpaRepositories("io.pivotal.microservices.accounts")
 @PropertySource("classpath:db-config.properties")
-public class ExpectativaConfiguration {
+public class ExpectativasConfiguration {
 
 	protected Logger logger;
 
-	public ExpectativaConfiguration() {
+	public ExpectativasConfiguration() {
 		logger = Logger.getLogger(getClass().getName());
 	}
 
@@ -53,8 +53,8 @@ public class ExpectativaConfiguration {
 
 		// Sanity check
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		List<Map<String, Object>> accounts = jdbcTemplate.queryForList("SELECT number FROM Expectativa");
-		logger.info("System has " + accounts.size() + " accounts");
+		List<Map<String, Object>> expectativas = jdbcTemplate.queryForList("SELECT number FROM Expectativa");
+		logger.info("System has " + expectativas.size() + " expectativas");
 
 		// Populate with random balances
 		Random rand = new Random();

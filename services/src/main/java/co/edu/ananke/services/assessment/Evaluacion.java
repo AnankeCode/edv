@@ -23,16 +23,15 @@ public class Evaluacion implements Serializable {
 	public static Long nextId = 0L;
 
 	@Id
+	
+	
+	protected int eva_id;
+
+	protected String eva_pregunta;
+
+	@Column(name = "Evaluacion")
 	protected String usu_tipoid;
-
 	protected int usu_numid;
-	
-	protected String eva_id;
-
-	protected int eva_pregunta;
-
-	@Column(name = "Evaluiacion")
-	
     private int eva_opcion;
     private String eva_detalle;
 
@@ -43,22 +42,23 @@ public class Evaluacion implements Serializable {
 	 * 
 	 * @return The next available id.
 	 */
-	protected static Long getNextId() {
-		synchronized (nextId) {
-			return nextId++;
+	protected static Long getNext_Id() {
+		synchronized (next_Id) {
+			return next_Id++;
 		}
 	}
 
 	/**
 	 * Default constructor for JPA only.
 	 */
-	protected Account() {
+	protected Evaluacion() {
 		balance = BigDecimal.ZERO;
 	}
 
 	public Evaluacion(String eva_pregunta, int eva_opcion, String eva_detalle) {
 		id = getNextId();
 		this.eva_pregunta = pregunta;
+		this.eva_detalle = detalle;
 		this. eva_opcion= opcion;
 		balance = BigDecimal.ZERO;
 	}
@@ -82,7 +82,7 @@ public class Evaluacion implements Serializable {
 	}
 
 	protected void seteva_id(String eva_id) {
-		this.id = eva_id;
+		this.eva_id = eva_id;
 	}
 
 	public String eva_pregunta() {
@@ -93,11 +93,11 @@ public class Evaluacion implements Serializable {
 		this.eva_pregunta = eva_pregunta;
 	}
 
-	public String eva_opcion() {
+	public int eva_opcion() {
 		return eva_opcion;
 	}
 
-	protected void seteva_opcion(String eva_opcion) {
+	protected void seteva_opcion(int eva_opcion) {
 		this.eva_opcion = eva_opcion;
 	
 	
@@ -121,9 +121,6 @@ public class Evaluacion implements Serializable {
 		balance.add(amount);
 	}
 
-	@Override
-	public String toString() {
-		return number + " [" + owner + "]: $" + balance;
-	}
+
 
 }

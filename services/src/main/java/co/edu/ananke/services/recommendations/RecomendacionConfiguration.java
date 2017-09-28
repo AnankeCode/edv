@@ -54,7 +54,7 @@ public class RecomendacionConfiguration {
 		// Sanity check
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		List<Map<String, Object>> accounts = jdbcTemplate.queryForList("SELECT number FROM Recomendacion");
-		logger.info("System has " + accounts.size() + " accounts");
+		logger.info("System has " + recomendaciones.size() + " recomendaciones");
 
 		// Populate with random balances
 		Random rand = new Random();

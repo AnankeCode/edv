@@ -16,9 +16,9 @@ import io.pivotal.microservices.exceptions.AccountNotFoundException;
  * @author SantiPurdy
  */
 @RestController
-public class EvaluacionController {
+public class EvaluacionesController {
 
-	protected Logger logger = Logger.getLogger(AccountsController.class
+	protected Logger logger = Logger.getLogger(EvaluacionesController.class
 			.getName());
 	protected EvaluacionRepository evaluacionRepository;
 
@@ -29,11 +29,11 @@ public class EvaluacionController {
 	 *            An account repository implementation.
 	 */
 	@Autowired
-	public EvaluacionController(EvaluacionRepository evaluacionRepository) {
+	public EvaluacionesController(EvaluacionRepository evaluacionRepository) {
 		this.evaluacionRepository = evaluacionRepository;
 
-		logger.info("evaluacionRepository says system has "
-				+ evaluacionRepository.countevaluacion() + " accounts");
+		logger.info("EvaluacionRepository says system has "
+				+ evaluacionRepository.countEvaluaciones() + " evaluaciones");
 	}
 
 	/**
@@ -45,15 +45,15 @@ public class EvaluacionController {
 	 * @throws AccountNotFoundException
 	 *             If the number is not recognised.
 	 */
-	@RequestMapping("/evaluacion/{accountNumber}")
-	public Account byNumber(@PathVariable("accountNumber") String accountNumber) {
+	@RequestMapping("/evaluacion/{usu_numid}")
+	public Account byusu_numid(@PathVariable(" Evaluacionusu_numid") int Evaluacionusu_numid) {
 
-		logger.info("accounts-service byNumber() invoked: " + accountNumber);
-		Account account = evaluacionRepository.findByNumber(accountNumber);
-		logger.info("accounts-service byNumber() found: " + account);
+		logger.info("evaluaciones-service byusu_numid() invoked: " + Evaluacionusu_numid);
+		Evaluacion evaluacion = evaluacionRepository.findByusu_numid(Evaluacionusu_numid);
+		logger.info("evaluaciones-service byusu_numid() found: " + evaluacion);
 
-		if (account == null)
-			throw new AccountNotFoundException(accountNumber);
+		if (evaluacion == null)
+			throw new EvaluacionNotFoundException(accountNumber);
 		else {
 			return evaluacion;
 		}
@@ -69,20 +69,20 @@ public class EvaluacionController {
 	 * @throws AccountNotFoundException
 	 *             If there are no matches at all.
 	 */
-	@RequestMapping("/accounts/owner/{name}")
-	public List<Account> byOwner(@PathVariable("name") String partialName) {
+	@RequestMapping("/Usuarios/usu_tipoid/{name}")
+	public List<Usuarios> by usu_numid(@PathVariable("name") String partialusu_tipoid) {
 		logger.info("accounts-service byOwner() invoked: "
 				+ evaluacionRepository.getClass().getName() + " for "
 				+ partialName);
 
 		List<evaluacion> evaluacion = evaluacionRepository
-				.findByOwnerContainingIgnoreCase(partialName);
-		logger.info("accounts-service byOwner() found: " + accounts);
+				.findByusu_tipo_idContainingIgnoreCase(partialName);
+		logger.info("accounts-service byusu_tipoid() found: " + evaluaciones);
 
-		if (accounts == null || accounts.size() == 0)
-			throw new AccountNotFoundException(partialName);
+		if (evaluaciones == null || accounts.size() == 0)
+			throw new EvaluacionNotFoundException(partialusu_tipoid);
 		else {
-			return evaluacion;
+			return evaluaciones;
 		}
 	}
 }

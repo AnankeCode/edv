@@ -46,20 +46,20 @@ public class UsuariosConfiguration {
 
 		// Create an in-memory H2 relational database containing some demo
 		// accounts.
-		DataSource dataSource = (new EmbeddedDatabaseBuilder()).addScript("classpath:testdb/Usuarios.sql")
-				.addScript("classpath:testdb/Usuarios.sql").build();
+		DataSource dataSource = (new EmbeddedDatabaseBuilder()).addScript("classpath:testdb/.sql")
+				.addScript("classpath:testdb/.sql").build();
 
 		logger.info("dataSource = " + dataSource);
 
 		// Sanity check
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		List<Map<String, Object>> accounts = jdbcTemplate.queryForList("SELECT number FROM Usuarios");
-		logger.info("System has " + accounts.size() + " accounts");
+		List<Map<String, Object>> usuarios = jdbcTemplate.queryForList("SELECT number FROM Usuarios");
+		logger.info("System has " + usuarios.size() + " usuarios");
 
 		// Populate with random balances
 		Random rand = new Random();
 
-		for (Map<String, Object> item : accounts) {
+		for (Map<String, Object> item : usuarios) {
 			String number = (String) item.get("number");
 			BigDecimal balance = new BigDecimal(rand.nextInt(10000000) / 100.0).setScale(2, BigDecimal.ROUND_HALF_UP);
 			jdbcTemplate.update("UPDATE Usuarios SET balance = ? WHERE number = ?", balance, number);

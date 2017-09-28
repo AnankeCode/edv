@@ -38,9 +38,9 @@ public class Usuarios implements Serializable {
 	 * 
 	 * @return The next available id.
 	 */
-	protected static Long getNextusu_tipoid() {
-		synchronized (nextusu_tipoid) {
-			return nextusu_tipoid++;
+	protected static Long getNextId() {
+		synchronized (nextId) {
+			return nextId++;
 		}
 	}
 
@@ -63,8 +63,8 @@ public class Usuarios implements Serializable {
 		balance = BigDecimal.ZERO;
 	}
 
-	public String getusu_tipoid() {
-		return usu_tipoid;
+	public String getid() {
+		return id;
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class Usuarios implements Serializable {
 	}
 
 	public String getusu_nombre() {
-		return owner;
+		return usu_nombre;
 	}
 
 	protected void setusu_nombre(String usu_nombre) {
@@ -96,22 +96,22 @@ public class Usuarios implements Serializable {
 		return usu_correo;
 	}
 
-	protected void setusu_correo(int usu_correo) {
+	protected void setusu_correo(String usu_correo) {
 		this.usu_correo = usu_correo;
 	
-	 public Stri getusu_telefono() {
+	 public int getusu_telefono() {
 		return usu_telefono;
 	}
 
-	protected void setusu_telefono(String usu_telefono) {
+	protected void setusu_telefono(int usu_telefono) {
 		this.usu_telefono = usu_telefono;
 	
 	
-	 public String getusu_celular() {
+	 public int getusu_celular() {
 		return usu_celular;
 	}
 
-	protected void setusu_celular(String usu_celular) {
+	protected void setusu_celular(int usu_celular) {
 		this.usu_celular = usu_celular;
 	
 	public string getBalance() {

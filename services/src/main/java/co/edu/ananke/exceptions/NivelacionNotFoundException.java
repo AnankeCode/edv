@@ -8,14 +8,14 @@ import org.springframework.http.HttpStatus;
  * throwing this exception. The @ResponseStatus causes Spring MVC to return a
  * 404 instead of the usual 500.
  * 
- * @author Paul Chapman
+ * @author SantiPurdy
  */
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class AccountNotFoundException extends RuntimeException {
+public class NivelacionNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public AccountNotFoundException(String accountNumber) {
-		super("No such account: " + accountNumber);
+	public NivelacionNotFoundException(int nivelacionusu_numid) {
+		super("No such account: " + nivelacionusu_numid);
 	}
 }

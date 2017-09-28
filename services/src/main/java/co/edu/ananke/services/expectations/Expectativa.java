@@ -15,7 +15,7 @@ import javax.persistence.Table;
  * @author SantiPurdy
  */
 @Entity
-@Table(name = "T_ACCOUNT")
+@Table(name = "Expectativa")
 public class Expectativa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -23,15 +23,15 @@ public class Expectativa implements Serializable {
 	public static Long nextId = 0L;
 
 	@Id
-	protected String usu_tipoid;
-
-	protected int usu_numid;
 	
 	protected String exp_pregunta;
 
 	protected int exp_id;
 
-	@Column(name = "name")
+	@Column(name = "Expectativa")
+	protected String usu_tipoid;
+
+	protected int usu_numid;
 	
     private int exp_opcion;
     
@@ -56,10 +56,11 @@ public class Expectativa implements Serializable {
 		balance = BigDecimal.ZERO;
 	}
 
-	public Account(int exp_opcion , String exp_pregunta) {
+	public Account(int exp_opcion , String exp_pregunta , String exp_detalle) {
 		id = getNextId();
 		this.exp_pregunta = pregunta;
 		this.exp_opcion = opcion;
+		this.exp_detalle = detalle;
 		balance = BigDecimal.ZERO;
 	}
 
@@ -93,13 +94,20 @@ public class Expectativa implements Serializable {
 		this.exp_pregunta = exp_pregunta;
 	}
 
-	public String getexp_opcion() {
+	public int getexp_opcion() {
 		return exp_opcion;
 	}
 
-	protected void setexp_opcion(String exp_opcion) {
+	protected void setexp_opcion(int exp_opcion) {
 		this.exp_opcion = exp_opcion;
 	
+	
+	public String getexp_detalle() {
+		return exp_detalle;
+	}
+
+	protected void setexp_detalle(String exp_detalle) {
+		this.exp_detalle= exp_detalle;
 	
 	
 	public BigDecimal getBalance() {

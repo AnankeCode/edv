@@ -28,11 +28,11 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 @EntityScan("io.pivotal.microservices.accounts")
 @EnableJpaRepositories("io.pivotal.microservices.accounts")
 @PropertySource("classpath:db-config.properties")
-public class EvaluacionConfiguration {
+public class EvaluacionesConfiguration {
 
 	protected Logger logger;
 
-	public AccountsConfiguration() {
+	public EvaluacionesConfiguration() {
 		logger = Logger.getLogger(getClass().getName());
 	}
 
@@ -54,7 +54,7 @@ public class EvaluacionConfiguration {
 		// Sanity check
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		List<Map<String, Object>> accounts = jdbcTemplate.queryForList("SELECT number FROM Evaluacion");
-		logger.info("System has " + accounts.size() + " accounts");
+		logger.info("System has " + evaluaciones.size() + " accounts");
 
 		// Populate with random balances
 		Random rand = new Random();

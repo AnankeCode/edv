@@ -20,7 +20,7 @@ public class RecomendacionController {
 
 	protected Logger logger = Logger.getLogger(RecomendacionController.class
 			.getName());
-	protected RecomendacionRepository recomendacionRepository;
+	protected RecomendacionesRepository recomendacionesRepository;
 
 	/**
 	 * Create an instance plugging in the respository of Accounts.
@@ -29,11 +29,11 @@ public class RecomendacionController {
 	 *            An account repository implementation.
 	 */
 	@Autowired
-	public RecomendacionController(RecomendacionRepository recomendacionRepository) {
-		this.accountRepository = accountRepository;
+	public RecomendacionController(RecomendacionesRepository recomendacionesRepository) {
+		this.recomendacionesRepository = recomendacionesRepository;
 
-		logger.info("AccountRepository says system has "
-				+ RecomendacionRepository.countRecomendacion() + " accounts");
+		logger.info("RecomendacionesRepository says system has "
+				+ recomendacionesRepository.countRecomendacion() + " recomendacion");
 	}
 
 	/**
@@ -45,15 +45,15 @@ public class RecomendacionController {
 	 * @throws AccountNotFoundException
 	 *             If the number is not recognised.
 	 */
-	@RequestMapping("/Recomendacion/{accountNumber}")
-	public Recomendacion byNumber(@PathVariable("accountNumber") String accountNumber) {
+	@RequestMapping("/Recomendacion/{Recomendacionusu_numid}")
+	public Recomendacion byusu_numid(@PathVariable("Recomendacionusu_numidr") String Recomendacionusu_numid) {
 
-		logger.info("accounts-service byNumber() invoked: " + accountNumber);
-		Recomendacion recomendacion = recomendacionRepository.findByNumber(accountNumber);
-		logger.info("accounts-service byNumber() found: " + account);
+		logger.info("recomendacion-service byusu_numid() invoked: " + Recomendacionusu_numid);
+		Recomendacion recomendacion = recomendacionRepository.findByusu_numid(Recomendacionusu_numid);
+		logger.info("recomendacion-service byusu_numid() found: " + recomendaciones);
 
 		if (recomendacion == null)
-			throw new AccountNotFoundException(accountNumber);
+			throw new RecomendacionNotFoundException(Recomendacionusu_numid);
 		else {
 			return recomendacion;
 		}
@@ -69,18 +69,18 @@ public class RecomendacionController {
 	 * @throws AccountNotFoundException
 	 *             If there are no matches at all.
 	 */
-	@RequestMapping("/recomendacion/owner/{name}")
-	public List<Account> byOwner(@PathVariable("name") String partialName) {
-		logger.info("accounts-service byOwner() invoked: "
+	@RequestMapping("/recomendacion/usu_tipoid/{name}")
+	public List<Account> byusu_tipoid(@PathVariable("name") String partialusu_tipoid) {
+		logger.info("recomendacion-service byusu_tipoid() invoked: "
 				+ recomendacionRepository.getClass().getName() + " for "
-				+ partialName);
+				+ partialusu_tipoid);
 
 		List<Recomendacion> Recomendacion = RecomendacionRepository
 				.findByOwnerContainingIgnoreCase(partialName);
-		logger.info("accounts-service byOwner() found: " + Recomendacion);
+		logger.info("recomendacion-service byOwner() found: " + Recomendacion);
 
 		if (Recomendacion == null || Recomendacion.size() == 0)
-			throw new AccountNotFoundException(partialName);
+			throw new RecomendacionNotFoundException(partialusu_tipoid);
 		else {
 			return Recomendacion;
 		}

@@ -18,7 +18,7 @@ import io.pivotal.microservices.exceptions.AccountNotFoundException;
 @RestController
 public class ExpectativaController {
 
-	protected Logger logger = Logger.getLogger(AccountsController.class
+	protected Logger logger = Logger.getLogger(ExpectativasController.class
 			.getName());
 	protected ExpectativaRepository expectativaRepository;
 
@@ -29,11 +29,11 @@ public class ExpectativaController {
 	 *            An account repository implementation.
 	 */
 	@Autowired
-	public ExpectativaController(ExpectativaRepository expectativaRepository) {
+	public ExpectativaSController(ExpectativaRepository expectativaRepository) {
 		this.expectativaRepository = expectativaRepository;
 
 		logger.info("AccountRepository says system has "
-				+ expectativaRepository.countExpectativa() + " accounts");
+				+ expectativaRepository.countExpectativas() + " expectativas");
 	}
 
 	/**
@@ -45,17 +45,17 @@ public class ExpectativaController {
 	 * @throws AccountNotFoundException
 	 *             If the number is not recognised.
 	 */
-	@RequestMapping("/accounts/{accountNumber}")
-	public Expectativa byNumber(@PathVariable("accountNumber") String accountNumber) {
+	@RequestMapping("/expectativas/{expectativausu_numid}")
+	public Expectativa byusu_numid(@PathVariable("usu_numid") String expectativausu_numid) {
 
-		logger.info("accounts-service byNumber() invoked: " + accountNumber);
-		Expecatativa expectativa = expectativaRepository.findByNumber(accountNumber);
-		logger.info("accounts-service byNumber() found: " + expectativa);
+		logger.info("expectativas-service byusu_numid() invoked: " + expectativausu_numid);
+		Expectativa expectativa = expectativaRepository.findByusu_numid(expectativausu_numid);
+		logger.info("expectativas-service byusu_numid() found: " + expectativa);
 
-		if (expectativa == null)
-			throw new AccountNotFoundException(accountNumber);
+		if (expectativas == null)
+			throw new ExpectativaNotFoundException(expectativausu_numid);
 		else {
-			return expectativa;
+			return expectativas;
 		}
 	}
 
@@ -69,20 +69,20 @@ public class ExpectativaController {
 	 * @throws AccountNotFoundException
 	 *             If there are no matches at all.
 	 */
-	@RequestMapping("/accounts/owner/{name}")
-	public List<Account> byOwner(@PathVariable("name") String partialName) {
+	@RequestMapping("/expectativas/usu_tipoid/{name}")
+	public List<Expectativa> byOwner(@PathVariable("name") String partialName) {
 		logger.info("accounts-service byOwner() invoked: "
 				+ accountRepository.getClass().getName() + " for "
 				+ partialName);
 
 		List<expectativa>expectativa = expectativaRepository
-				.findByOwnerContainingIgnoreCase(partialName);
-		logger.info("accounts-service byOwner() found: " + accounts);
+				.findByusu_tipoidContainingIgnoreCase(partialusu_tipoid);
+		logger.info("expectativas-service byusu_tipoid() found: " + expectativas);
 
-		if (expectativa == null || expectativa.size() == 0)
-			throw new AccountNotFoundException(partialName);
+		if (expectativas == null || expectativas.size() == 0)
+			throw new ExpectativaNotFoundException(partialName);
 		else {
-			return expectativa;
+			return expectativas;
 		}
 	}
 }
