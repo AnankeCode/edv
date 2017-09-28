@@ -1,52 +1,36 @@
-
 <html>
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-
-      // Load Charts and the corechart and barchart packages.
-      google.charts.load('current', {'packages':['corechart']});
-
-      // Draw the pie chart and bar chart when Charts is loaded.
+      google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Profesor');
-        data.addColumn('number', 'Calificación');
-        data.addRows([
-          ['CarlosUribe', 3],
-          ['JenniferBetancourt', 1],
-          ['KellyRodríguez', 1],
-		  ['FranciscoMartínez', 1],
-		  ['MarthaVargas', 1], 
-		  ['JasmínRobayo', 1],
-		  ['CarmeloMontenegro', 1],
-          ['Julian Liberato', 2]
+        var data = google.visualization.arrayToDataTable([
+          ['Ambito', 'Bueno', 'Regular', 'Malo'],
+          ['Equipos', 1000, 400, 200],
+          ['Internet', 1170, 460, 250],
+          ['Herramientas', 660, 1120, 300], 
+		  ['Salón', 660, 1120, 300], 
+		  ['ZonasComunes', 660, 1120, 300],
+		  ['ServCompl.', 660, 1120, 300],
+          ['SprteTec.', 1030, 540, 350]
         ]);
 
-        var piechart_options = {title:'Forma Evaluación',
-                       width:400,
-                       height:300};
-        var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
-        piechart.draw(data, piechart_options);
+        var options = {
+          chart: {
+            title: 'Ananke Encuesta Instalaciones', 
+            subtitle: 'Período: 2017-3',
+          }
+        };
 
-        var barchart_options = {title:'Forma Evaluación',
-                       width:400,
-                       height:300,
-                       legend: 'none'};
-        var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
-        barchart.draw(data, barchart_options);
+        var chart = new google.charts.Bar(document.getElementById('EncInst1'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
       }
-</script>
-<body>
-    <!--Table and divs that hold the pie charts-->
-    <table class="columns">
-      <tr>
-        <td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
-        <td><div id="barchart_div" style="border: 1px solid #ccc"></div></td>
-      </tr>
-    </table>
+    </script>
+  </head>
+  <body>
+    <div id="EncInst1" style="width: 800px; height: 500px;"></div>
   </body>
 </html>

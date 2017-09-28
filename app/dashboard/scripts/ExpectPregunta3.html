@@ -8,9 +8,9 @@
       google.charts.load('current', {'packages':['corechart']});
 
       // Draw the pie chart and bar chart when Charts is loaded.
-      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawExpc3Chart);
 
-      function drawChart() {
+      function drawExpc3Chart() {
 
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Opción');
@@ -25,14 +25,14 @@
         var piechart_options = {title:'Tiempo para aprender',
                        width:400,
                        height:300};
-        var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+        var piechart = new google.visualization.PieChart(document.getElementById('ExpcPiechart3'));
         piechart.draw(data, piechart_options);
 
         var barchart_options = {title:'Tiempo para aprender',
                        width:400,
                        height:300,
                        legend: 'none'};
-        var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+        var barchart = new google.visualization.BarChart(document.getElementById('ExpcBarchart3'));
         barchart.draw(data, barchart_options);
       }
 </script>
@@ -40,8 +40,8 @@
     <!--Table and divs that hold the pie charts-->
     <table class="columns">
       <tr>
-        <td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
-        <td><div id="barchart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="ExpcPiechart3" style="border: 1px solid #ccc"></div></td>
+        <td><div id="ExpcBarchart3" style="border: 1px solid #ccc"></div></td>
       </tr>
     </table>
   </body>
