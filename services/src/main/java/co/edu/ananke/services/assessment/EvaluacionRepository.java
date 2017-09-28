@@ -6,34 +6,26 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 
 /**
- * Repository for Account data implemented using Spring Data JPA.
- * 
+ 
  * @author SantiPurdy
  */
-public interface EvaluacionRepository extends Repository<Evaluacion, string> {
-	/**
-	 * Find an account with the specified account number.
-	 *
-	 * @param accountNumber
-	 * @return The account if found, null otherwise.
-	 */
-	public Evaluacion findByNumber(String accountNumber);
 
-	/**
-	 * Find accounts whose owner name contains the specified string
-	 * 
-	 * @param partialName
-	 *            Any alphabetic string.
-	 * @return The list of matching accounts - always non-null, but may be
-	 *         empty.
-	 */
-	public List<Evaluacion> findByOwnerContainingIgnoreCase(String partialName);
 
-	/**
-	 * Fetch the number of accounts known to the system.
-	 * 
-	 * @return The number of accounts.
-	 */
-	@Query("SELECT count(*) from Account")
-	public int countAccounts();
-}
+
+public interface EvaluacionRepository extends Repository<Usuarios, int> {
+
+	
+
+	public Evaluacion findByusu_numid(int Evaluacionusu_numid);
+
+	
+
+	public List<Usuarios> findByusu_tipoidContainingIgnoreCase(String partialUsuarios);
+
+
+	
+
+	
+	@Query("SELECT count(*) from  Usuarios")
+	public int countEvaluaciones();
+

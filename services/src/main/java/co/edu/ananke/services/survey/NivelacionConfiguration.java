@@ -19,8 +19,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 
 /**
- * The accounts Spring configuration.
- * 
+ 
  * @author SantiPurdy
  */
 @Configuration
@@ -36,35 +35,24 @@ public class NivelacionConfiguration {
 		logger = Logger.getLogger(getClass().getName());
 	}
 
-	/**
-	 * Creates an in-memory "rewards" database populated with test data for fast
-	 * testing
-	 */
+	
 	@Bean
 	public DataSource dataSource() {
 		logger.info("dataSource() invoked");
 
-		// Create an in-memory H2 relational database containing some demo
-		// accounts.
+		
 		DataSource dataSource = (new EmbeddedDatabaseBuilder()).addScript("classpath:testdb/schema.sql")
 				.addScript("classpath:testdb/data.sql").build();
 
 		logger.info("dataSource = " + dataSource);
 
-		// Sanity check
+		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		List<Map<String, Object>> accounts = jdbcTemplate.queryForList("SELECT number FROM Nivelacion");
-		logger.info("System has " + accounts.size() + " accounts");
 
-		// Populate with random balances
-		Random rand = new Random();
+		logger.info("System has " + nivelacion.size() + " nivelacion");
 
-		for (Map<String, Object> item : Nivelacion) {
-			String number = (String) item.get("number");
-			BigDecimal balance = new BigDecimal(rand.nextInt(10000000) / 100.0).setScale(2, BigDecimal.ROUND_HALF_UP);
-			jdbcTemplate.update("UPDATE Nivelacion SET balance = ? WHERE number = ?", balance, number);
-		}
 
-		return dataSource;
+		
 	}
 }

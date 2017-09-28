@@ -20,67 +20,53 @@ public class RecomendacionController {
 
 	protected Logger logger = Logger.getLogger(RecomendacionController.class
 			.getName());
-	protected RecomendacionRepository recomendacionRepository;
 
-	/**
-	 * Create an instance plugging in the respository of Accounts.
-	 * 
-	 * @param accountRepository
-	 *            An account repository implementation.
-	 */
+	protected RecomendacionesRepository recomendacionesRepository;
+
+
+	
 	@Autowired
-	public RecomendacionController(RecomendacionRepository recomendacionRepository) {
-		this.accountRepository = accountRepository;
 
-		logger.info("AccountRepository says system has "
-				+ RecomendacionRepository.countRecomendacion() + " accounts");
+	public RecomendacionController(RecomendacionesRepository recomendacionesRepository) {
+		this.recomendacionesRepository = recomendacionesRepository;
+
+		logger.info("RecomendacionesRepository says system has "
+				+ recomendacionesRepository.countRecomendacion() + " recomendacion");
+
 	}
 
-	/**
-	 * Fetch an account with the specified account number.
-	 * 
-	 * @param accountNumber
-	 *            A numeric, 9 digit account number.
-	 * @return The account if found.
-	 * @throws AccountNotFoundException
-	 *             If the number is not recognised.
-	 */
-	@RequestMapping("/Recomendacion/{accountNumber}")
-	public Recomendacion byNumber(@PathVariable("accountNumber") String accountNumber) {
+	
 
-		logger.info("accounts-service byNumber() invoked: " + accountNumber);
-		Recomendacion recomendacion = recomendacionRepository.findByNumber(accountNumber);
-		logger.info("accounts-service byNumber() found: " + account);
+	@RequestMapping("/Recomendacion/{Recomendacionusu_numid}")
+	public Recomendacion byusu_numid(@PathVariable("Recomendacionusu_numidr") String Recomendacionusu_numid) {
+
+		logger.info("recomendacion-service byusu_numid() invoked: " + Recomendacionusu_numid);
+		Recomendacion recomendacion = recomendacionRepository.findByusu_numid(Recomendacionusu_numid);
+		logger.info("recomendacion-service byusu_numid() found: " + recomendaciones);
 
 		if (recomendacion == null)
-			throw new AccountNotFoundException(accountNumber);
+			throw new RecomendacionNotFoundException(Recomendacionusu_numid);
+
 		else {
 			return recomendacion;
 		}
 	}
 
-	/**
-	 * Fetch accounts with the specified name. A partial case-insensitive match
-	 * is supported. So <code>http://.../accounts/owner/a</code> will find any
-	 * accounts with upper or lower case 'a' in their name.
-	 * 
-	 * @param partialName
-	 * @return A non-null, non-empty set of accounts.
-	 * @throws AccountNotFoundException
-	 *             If there are no matches at all.
-	 */
-	@RequestMapping("/recomendacion/owner/{name}")
-	public List<Account> byOwner(@PathVariable("name") String partialName) {
-		logger.info("accounts-service byOwner() invoked: "
-				+ recomendacionRepository.getClass().getName() + " for "
-				+ partialName);
+	
+
+	@RequestMapping("/recomendacion/usu_tipoid/{Usuarios}")
+	public List<Usuarios> byusu_tipoid(@PathVariable("Usuarios") String partialUsuarios) {
+		logger.info("recomendacion-service byusu_tipoid() invoked: "
+				+ recomendacionRepository.getRecomendacion().getUsuarios() + " for "
+				+ partialUsuarios);
 
 		List<Recomendacion> Recomendacion = RecomendacionRepository
 				.findByOwnerContainingIgnoreCase(partialName);
-		logger.info("accounts-service byOwner() found: " + Recomendacion);
+		logger.info("recomendacion-service byOwner() found: " + Recomendacion);
 
 		if (Recomendacion == null || Recomendacion.size() == 0)
-			throw new AccountNotFoundException(partialName);
+			throw new RecomendacionNotFoundException(partialusu_tipoid);
+
 		else {
 			return Recomendacion;
 		}

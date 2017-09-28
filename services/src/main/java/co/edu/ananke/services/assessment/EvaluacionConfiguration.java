@@ -19,8 +19,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 
 /**
- * The accounts Spring configuration.
- * 
+ 
  * @author SantiPurdy
  */
 @Configuration
@@ -28,18 +27,19 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 @EntityScan("io.pivotal.microservices.accounts")
 @EnableJpaRepositories("io.pivotal.microservices.accounts")
 @PropertySource("classpath:db-config.properties")
-public class EvaluacionConfiguration {
+
+
+
+public class EvaluacionesConfiguration {
 
 	protected Logger logger;
 
-	public AccountsConfiguration() {
-		logger = Logger.getLogger(getClass().getName());
+	public EvaluacionesConfiguration() {
+
+		logger = Logger.getLogger(getEvaluacion().getUsuaios());
 	}
 
-	/**
-	 * Creates an in-memory "rewards" database populated with test data for fast
-	 * testing
-	 */
+	
 	@Bean
 	public DataSource dataSource() {
 		logger.info("dataSource() invoked");
@@ -53,18 +53,11 @@ public class EvaluacionConfiguration {
 
 		// Sanity check
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		List<Map<String, Object>> accounts = jdbcTemplate.queryForList("SELECT number FROM Evaluacion");
-		logger.info("System has " + accounts.size() + " accounts");
+		List<Map<int, Object>> accounts = jdbcTemplate.queryForList("SELECT number FROM Evaluacion");
 
-		// Populate with random balances
-		Random rand = new Random();
+		logger.info("System has " + evaluaciones.size() + " evaluaciones");
 
-		for (Map<String, Object> item : evaluacion) {
-			String number = (String) item.get("number");
-			BigDecimal balance = new BigDecimal(rand.nextInt(10000000) / 100.0).setScale(2, BigDecimal.ROUND_HALF_UP);
-			jdbcTemplate.update("UPDATE T_ACCOUNT SET balance = ? WHERE number = ?", balance, number);
-		}
-
-		return dataSource;
+		
+		
 	}
 }
