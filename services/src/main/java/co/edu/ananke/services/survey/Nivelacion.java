@@ -9,9 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Persistent account entity with JPA markup. Accounts are stored in an H2
- * relational database.
- * 
+ 
  * @author SantiPurdy
  */
 @Entity
@@ -23,11 +21,11 @@ public class Nivelacion implements Serializable {
 	public static Long nextId = 0L;
 
 	@Id
-	
-	
+
 	protected String niv_id;
 
 	protected int niv_pregunta;
+
 	
 	@Column(name = "Nivelacion")
     protected String usu_tipoid;
@@ -35,27 +33,10 @@ public class Nivelacion implements Serializable {
 	protected int usu_numid;	
 
 	private int niv_opcion;
-    private String niv_detalle;
-	/**
-	 * This is a very simple, and non-scalable solution to generating unique
-	 * ids. Not recommended for a real application. Consider using the
-	 * <tt>@GeneratedValue</tt> annotation and a sequence to generate ids.
-	 * 
-	 * @return The next available id.
-	 */
-	protected static Long getNextId() {
-		synchronized (nextId) {
-			return nextId++;
-		}
-	}
 
-	/**
-	 * Default constructor for JPA only.
-	 */
-	protected Nivelacion
+    private String niv_detalle;
 	
-	() {
-		balance = BigDecimal.ZERO;
+
 	}
 
 	public Nivelacion(String niv_pregunta, int niv_opcion, String niv_detalle) {
@@ -63,22 +44,8 @@ public class Nivelacion implements Serializable {
 		this.niv_pregunta = pregunta;
 		this.niv_opcion= opcion;
 		this.niv_detalle= detalle;
-		balance = BigDecimal.ZERO;
-	}
 
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * Set JPA id - for testing and JPA only. Not intended for normal use.
-	 * 
-	 * @param id
-	 *            The new id.
-	 */
-	protected void setId(long id) {
-		this.id = id;
-	}
+		
 
 	public int getniv_id() {
 		return niv_id;
@@ -113,21 +80,6 @@ public class Nivelacion implements Serializable {
 		this.niv_detalle = niv_detalle;
 	}
 
-	public BigDecimal getBalance() {
-		return balance.setScale(2, BigDecimal.ROUND_HALF_EVEN);
-	}
-
-	public void withdraw(BigDecimal amount) {
-		balance.subtract(amount);
-	}
-
-	public void deposit(BigDecimal amount) {
-		balance.add(amount);
-	}
-
-	@Override
-	public String toString() {
-		return number + " [" + owner + "]: $" + balance;
-	}
+	
 
 }

@@ -19,8 +19,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 
 /**
- * The accounts Spring configuration.
- * 
+  
  * @author SantiPurdy
  */
 @Configuration
@@ -54,17 +53,10 @@ public class RecomendacionConfiguration {
 		// Sanity check
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		List<Map<String, Object>> accounts = jdbcTemplate.queryForList("SELECT number FROM Recomendacion");
+
 		logger.info("System has " + recomendaciones.size() + " recomendaciones");
 
-		// Populate with random balances
-		Random rand = new Random();
 
-		for (Map<String, Object> item : accounts) {
-			String number = (String) item.get("number");
-			BigDecimal balance = new BigDecimal(rand.nextInt(10000000) / 100.0).setScale(2, BigDecimal.ROUND_HALF_UP);
-			jdbcTemplate.update("UPDATE Recomendacion SET balance = ? WHERE number = ?", balance, number);
-		}
-
-		return dataSource;
+		
 	}
 }

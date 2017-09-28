@@ -31,48 +31,26 @@ public class Usuarios implements Serializable {
     private int usu_telefono;
     private int usu_celular;
 
-	/**
-	 * This is a very simple, and non-scalable solution to generating unique
-	 * ids. Not recommended for a real application. Consider using the
-	 * <tt>@GeneratedValue</tt> annotation and a sequence to generate ids.
-	 * 
-	 * @return The next available id.
-	 */
-	protected static Long getNextId() {
-		synchronized (nextId) {
-			return nextId++;
+	
+
 		}
 	}
 
-	/**
-	 * Default constructor for JPA only.
-	 */
-	protected Usuarios() {
-		balance = BigDecimal.ZERO;
-	}
+	
+	
 
 	public Usuarios(String usu_nombre, String usu_correo, int usu_telefono, int usu_celular) {
-		id = getNextusu_tipoid();
-		id1= getNextusu_numid();
+		
 		this.usu_nombre = nombre;
 		this.usu_correo = correo;
 		this.usu_telefono = telefono;
 		this.usu_celular = celular;
 		
 		
-		balance = BigDecimal.ZERO;
+		
 	}
 
-	public String getid() {
-		return id;
-	}
 
-	/**
-	 * Set JPA id - for testing and JPA only. Not intended for normal use.
-	 * 
-	 * @param id
-	 *            The new id.
-	 */
 	protected void setusu_tipoid(String usu_tipoid) {
 		this.usu_tipoid = usu_tipoid;
 	}
@@ -86,7 +64,9 @@ public class Usuarios implements Serializable {
 	}
 
 	public String getusu_nombre() {
+
 		return usu_nombre;
+
 	}
 
 	protected void setusu_nombre(String usu_nombre) {
@@ -95,6 +75,7 @@ public class Usuarios implements Serializable {
     public String getusu_correo() {
 		return usu_correo;
 	}
+
 
 	protected void setusu_correo(String usu_correo) {
 		this.usu_correo = usu_correo;
@@ -112,18 +93,10 @@ public class Usuarios implements Serializable {
 	}
 
 	protected void setusu_celular(int usu_celular) {
+
 		this.usu_celular = usu_celular;
 	
-	public string getBalance() {
-		return balance.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+	
 	}
-
-	public void withdraw(BigDecimal amount) {
-		balance.subtract(amount);
 	}
-
-	public void deposit(BigDecimal amount) {
-		balance.add(amount);
-	}
-
 	
