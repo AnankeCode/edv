@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Ambito', 'Bueno', 'Regular', 'Malo'],
+          ['Equipos', 1000, 400, 200],
+          ['Internet', 1170, 460, 250],
+          ['Herramientas', 660, 1120, 300], 
+		  ['Salón', 660, 1120, 300], 
+		  ['ZonasComunes', 660, 1120, 300],
+		  ['ServCompl.', 660, 1120, 300],
+          ['SprteTec.', 1030, 540, 350]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Ananke Encuesta Instalaciones', 
+            subtitle: 'Período: 2017-3',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('EncInst1'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="EncInst1" style="width: 800px; height: 500px;"></div>
+  </body>
+</html>
