@@ -1,14 +1,11 @@
-package io.pivotal.microservices.accounts;
+package co.edu.ananke.services.expectations;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,33 +25,28 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 @EnableJpaRepositories("io.pivotal.microservices.accounts")
 @PropertySource("classpath:db-config.properties")
 
-public class ExpectativasConfiguration {
+public class ExpectativaConfiguration {
 
 	protected Logger logger;
 
-	public ExpectativasConfiguration() {
+	public ExpectativaConfiguration() {
 
 		logger = Logger.getLogger(getExpectativa().getUsuarios());
 	}
 
 	
 	@Bean
-	public DataSource dataSource() {
-		logger.info("dataSource() invoked");
-
-		
-		DataSource dataSource = (new EmbeddedDatabaseBuilder()).addScript("classpath:testdb/schema.sql")
-				.addScript("classpath:testdb/data.sql").build();
-
-		logger.info("dataSource = " + dataSource);
+	
 
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
 		List<Map<String, Object>> expectativas = jdbcTemplate.queryForList("SELECT number FROM Expectativa");
-		logger.info("System has " + expectativas.size() + " expectativas");
+		logger.info("System has " + expectativa.size() + " expectativas");
 
 
 		
 	}
+
+    
 }

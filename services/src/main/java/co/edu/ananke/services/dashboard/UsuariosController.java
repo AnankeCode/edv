@@ -1,4 +1,4 @@
-package io.pivotal.microservices.accounts;
+package co.edu.ananke.services.dashboard;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.pivotal.microservices.exceptions.AccountNotFoundException;
+import io.pivotal.microservices.exceptions.UsuarioNotFoundException;
 
 /**
  
@@ -18,15 +18,17 @@ import io.pivotal.microservices.exceptions.AccountNotFoundException;
 public class UsuariosController {
 
 
-	protected Logger logger = Logger.getLogger(UsuarioController.Usuarios
+	protected static final Logger logger = Logger.getLogger(UsuariosController.Usuarios
 
 			.getUsuarios());
+    private static Object Usuarios;
 	protected UsuariosRepository usuariosRepository;
+    private String usuarios;
 
 	
 	@Autowired
 
-	public UsuarioController(UsuariosRepository usuariosRepository) {
+	public UsuariosController(UsuariosRepository usuariosRepository) {
 
 		this.usuariosRepository = usuariosRepository;
 
@@ -38,7 +40,7 @@ public class UsuariosController {
 	 
 
 	@RequestMapping("/usuario/{ usuariosusu_numid}")
-	public Account byusu_numid(@PathVariable(" usuariosusu_numid") String usu_tipoid) {
+	public Usuarios byusu_numid(@PathVariable(" usuariosusu_numid") String usu_tipoid, String usuariosusu_numid) {
 
 		logger.info("Usuarios-service byusu_numid() invoked: " +  usuariosusu_numid);
         Usuarios usuarios = usuariosRepository.findByusu_numid( usuariosusu_numid);
@@ -55,14 +57,14 @@ public class UsuariosController {
 	
 
 	@RequestMapping("/usuario/partialUsuarios/{usuarios}")
-	public List<Usuarios> byUsuarios(@PathVariable("name") String partialUsuarios) {
+	public String byUsuarios(@PathVariable("name") String partialUsuarios) {
 		logger.info("usuarios-service byusu_tipo_id() invoked: "
 				+ UsuariosRepository.getUsuarios().getUsuarios() + " for "
 				+ partialUsuarios);
 
 		List<Usuarios> Usuarios = usuariosRepository
 				.findByusu_tipo_idContainingIgnoreCase(partialUsuarios);
-		logger.info("usuario-service byOwner() found: " + usuario);
+		logger.info("usuario-service byOwner() found: " + usuarios);
 
 		if (usuarios == null || usuarios.size() == 0)
 			throw new UsuarioNotFoundException(partialUsuarios);

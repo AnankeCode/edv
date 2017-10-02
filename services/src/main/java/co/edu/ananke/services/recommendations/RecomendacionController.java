@@ -1,4 +1,4 @@
-package io.pivotal.microservices.accounts;
+package  co.edu.ananke.services.recommendations;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.pivotal.microservices.exceptions.AccountNotFoundException;
+import  co.edu.ananke.exceptions.RecomendacionNotFoundException;
+import co.edu.ananke.services.dashboard.Usuarios;
 
 /**
  * A RESTFul controller for accessing account information.
@@ -21,13 +22,13 @@ public class RecomendacionController {
 	protected Logger logger = Logger.getLogger(RecomendacionController.class
 			.getName());
 
-	protected RecomendacionesRepository recomendacionesRepository;
+	protected RecomendacionRepository recomendacionesRepository;
 
 
 	
 	@Autowired
 
-	public RecomendacionController(RecomendacionesRepository recomendacionesRepository) {
+	public RecomendacionController(RecomendacionRepository recomendacionesRepository) {
 		this.recomendacionesRepository = recomendacionesRepository;
 
 		logger.info("RecomendacionesRepository says system has "
@@ -41,7 +42,7 @@ public class RecomendacionController {
 	public Recomendacion byusu_numid(@PathVariable("Recomendacionusu_numidr") String Recomendacionusu_numid) {
 
 		logger.info("recomendacion-service byusu_numid() invoked: " + Recomendacionusu_numid);
-		Recomendacion recomendacion = recomendacionRepository.findByusu_numid(Recomendacionusu_numid);
+		Recomendacion recomendacion = RecomendacionRepository.findByusu_numid(Recomendacionusu_numid);
 		logger.info("recomendacion-service byusu_numid() found: " + recomendaciones);
 
 		if (recomendacion == null)
@@ -57,15 +58,15 @@ public class RecomendacionController {
 	@RequestMapping("/recomendacion/usu_tipoid/{Usuarios}")
 	public List<Usuarios> byusu_tipoid(@PathVariable("Usuarios") String partialUsuarios) {
 		logger.info("recomendacion-service byusu_tipoid() invoked: "
-				+ recomendacionRepository.getRecomendacion().getUsuarios() + " for "
+				+ RecomendacionRepository.getRecomendacion().getUsuarios() + " for "
 				+ partialUsuarios);
 
 		List<Recomendacion> Recomendacion = RecomendacionRepository
-				.findByOwnerContainingIgnoreCase(partialName);
+				.findByOwnerContainingIgnoreCase(partialUsuarios);
 		logger.info("recomendacion-service byOwner() found: " + Recomendacion);
 
 		if (Recomendacion == null || Recomendacion.size() == 0)
-			throw new RecomendacionNotFoundException(partialusu_tipoid);
+			throw new RecomendacionNotFoundException(partialUsuarios);
 
 		else {
 			return Recomendacion;

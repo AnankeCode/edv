@@ -1,4 +1,4 @@
-package io.pivotal.microservices.accounts;
+package co.edu.ananke.services.expectations;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.pivotal.microservices.exceptions.AccountNotFoundException;
+import co.edu.ananke.exceptions.ExpectativaNotFoundException;
 
 /**
   
@@ -18,7 +18,7 @@ import io.pivotal.microservices.exceptions.AccountNotFoundException;
 public class ExpectativaController {
 
 
-	protected Logger logger = Logger.getLogger(ExpectativasController.class
+	protected Logger logger = Logger.getLogger(ExpectativaController.class
 
 			.getUsuarios());
 	protected ExpectativaRepository expectativaRepository;
@@ -26,7 +26,7 @@ public class ExpectativaController {
 	
 	@Autowired
 
-	public ExpectativaSController(ExpectativaRepository expectativaRepository) {
+	public ExpectativaController(ExpectativaRepository expectativaRepository) {
 		this.expectativaRepository = expectativaRepository;
 
 		logger.info("AccountRepository says system has "
@@ -43,10 +43,10 @@ public class ExpectativaController {
 		Expectativa expectativa = expectativaRepository.findByusu_numid(expectativausu_numid);
 		logger.info("expectativas-service byusu_numid() found: " + expectativas);
 
-		if (expectativas == null)
+		if (expectativa == null)
 			throw new ExpectativaNotFoundException(expectativausu_numid);
 		else {
-			return expectativas;
+			return expectativa;
 
 		}
 	}
@@ -57,18 +57,18 @@ public class ExpectativaController {
 	public List<Expectativa> byOwner(@PathVariable("name") String partialUsuarios) {
 
 		logger.info("usuarios-service byOwner() invoked: "
-				+ accountRepository.getExpectativa().getUsuarios() + " for "
+				+ ExpectativaRepository.getExpectativa().getUsuarios() + " for "
 				+ partialUsuarios);
 
-		List<expectativa>expectativa = expectativaRepository
+		List<Expectativa>expectativa = expectativaRepository
 
-				.findByusu_tipoidContainingIgnoreCase(partialusu_tipoid);
-		logger.info("expectativas-service byusu_tipoid() found: " + expectativas);
+				.findByusu_tipoidContainingIgnoreCase(partialUsuarios);
+		logger.info("expectativas-service byusu_tipoid() found: " + expectativa);
 
-		if (expectativas == null || expectativas.size() == 0)
-			throw new ExpectativaNotFoundException(partialName);
+		if (expectativa == null || expectativa.size() == 0)
+			throw new ExpectativaNotFoundException(partialUsuarios);
 		else {
-			return expectativas;
+			return expectativa;
 
 	}
-}
+

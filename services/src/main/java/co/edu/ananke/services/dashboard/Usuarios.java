@@ -1,7 +1,6 @@
-package io.pivotal.microservices.accounts;
+package co.edu.ananke.services.dashboard;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,22 +32,16 @@ public class Usuarios implements Serializable {
 
 	
 
-		}
-	}
+		
+	
 
 	
 	
 
-	public Usuarios(String usu_nombre, String usu_correo, int usu_telefono, int usu_celular) {
-		
-		this.usu_nombre = nombre;
-		this.usu_correo = correo;
-		this.usu_telefono = telefono;
-		this.usu_celular = celular;
 		
 		
 		
-	}
+	
 
 
 	protected void setusu_tipoid(String usu_tipoid) {
@@ -80,13 +73,14 @@ public class Usuarios implements Serializable {
 	protected void setusu_correo(String usu_correo) {
 		this.usu_correo = usu_correo;
 	
+                }
 	 public int getusu_telefono() {
 		return usu_telefono;
 	}
 
 	protected void setusu_telefono(int usu_telefono) {
 		this.usu_telefono = usu_telefono;
-	
+	}
 	
 	 public int getusu_celular() {
 		return usu_celular;
@@ -98,5 +92,6 @@ public class Usuarios implements Serializable {
 	
 	
 	}
-	}
+        }
+	
 	

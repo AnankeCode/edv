@@ -1,4 +1,4 @@
-package io.pivotal.microservices.exceptions;
+package co.edu.ananke.exceptions;
 
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.HttpStatus;
