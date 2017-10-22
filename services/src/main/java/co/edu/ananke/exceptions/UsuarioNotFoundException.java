@@ -1,4 +1,4 @@
-package io.pivotal.microservices.exceptions;
+package co.edu.ananke.exceptions;
 
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.HttpStatus;
@@ -18,4 +18,10 @@ public class UsuarioNotFoundException extends RuntimeException {
 	public UsuarioNotFoundException(int usuariousu_munid) {
 		super("No such account: " + usuariousu_munid);
 	}
+
+    public UsuarioNotFoundException(String partialUsuarios) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 }

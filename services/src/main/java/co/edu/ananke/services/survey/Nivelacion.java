@@ -1,7 +1,6 @@
-package io.pivotal.microservices.accounts;
+package co.edu.ananke.services.survey;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,25 +36,21 @@ public class Nivelacion implements Serializable {
     private String niv_detalle;
 	
 
-	}
+	
 
-	public Nivelacion(String niv_pregunta, int niv_opcion, String niv_detalle) {
-		id = getNextId();
-		this.niv_pregunta = pregunta;
-		this.niv_opcion= opcion;
-		this.niv_detalle= detalle;
+	
 
 		
 
-	public int getniv_id() {
+	public String getniv_id() {
 		return niv_id;
 	}
 
 	protected void setniv_id(int niv_id) {
-		this.id = niv_id;
+		this.niv_id = niv_id;
 	}
 
-	public String niv_pregunta() {
+	public int niv_pregunta() {
 		return niv_pregunta;
 	}
 

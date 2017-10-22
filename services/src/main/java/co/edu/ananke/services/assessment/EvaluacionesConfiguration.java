@@ -1,7 +1,8 @@
-package  co.edu.ananke.services.recommendations;
+package co.edu.ananke.services.assessment;
 
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.sql.DataSource;
@@ -13,42 +14,43 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 
 /**
-  
+ 
  * @author SantiPurdy
  */
 @Configuration
 @ComponentScan
-@EntityScan(" co.edu.ananke.services.recommendations")
-@EnableJpaRepositories(" co.edu.ananke.services.recommendations")
+@EntityScan(" co.edu.ananke.services.assessment")
+@EnableJpaRepositories(" co.edu.ananke.services.assessment")
 @PropertySource("classpath:db-config.properties")
-public class RecomendacionConfiguration {
+
+
+
+public class EvaluacionesConfiguration {
 
 	protected Logger logger;
+    private Object evaluaciones;
 
-	public RecomendacionConfiguration() {
-		logger = Logger.getLogger(getClass().getName());
+	public EvaluacionesConfiguration() {
+
+		logger = Logger.getLogger(getEvaluacion().getUsuaios());
 	}
 
-	/**
-	 * Creates an in-memory "rewards" database populated with test data for fast
-	 * testing
-	 */
+	
 	@Bean
 	public DataSource dataSource() {
 		logger.info("dataSource() invoked");
 
 		
-
 		// Sanity check
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		List<Map<String, Object>> accounts = jdbcTemplate.queryForList("SELECT number FROM Recomendacion");
+		List<Map<int, Object>> evaluaciones = jdbcTemplate.queryForList("SELECT number FROM Evaluacion");
 
-		logger.info("System has " + recomendaciones.size() + " recomendaciones");
+            Logger info = logger.log(Level.INFO, "System has {0} evaluaciones", evaluaciones.size());
 
-
+    
 		
-	}
-}
+		
+	
+

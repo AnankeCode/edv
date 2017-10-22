@@ -1,5 +1,6 @@
-package io.pivotal.microservices.accounts;
+package  co.edu.ananke.services.assessment;
 
+import io.pivotal.microservices.accounts.Usuarios;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -29,3 +30,4 @@ public interface EvaluacionRepository extends Repository<Usuarios, int> {
 	@Query("SELECT count(*) from  Usuarios")
 	public int countEvaluaciones();
 
+   

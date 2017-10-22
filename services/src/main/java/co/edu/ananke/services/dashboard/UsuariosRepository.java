@@ -1,4 +1,4 @@
-package io.pivotal.microservices.accounts;
+package co.edu.ananke.services.dashboard;
 
 import java.util.List;
 

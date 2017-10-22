@@ -1,4 +1,4 @@
-package io.pivotal.microservices.accounts;
+package  co.edu.ananke.services.recommendations;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

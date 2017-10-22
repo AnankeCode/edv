@@ -1,7 +1,7 @@
-package io.pivotal.microservices.accounts;
+package co.edu.ananke.services.assessment;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,21 +32,8 @@ public class Evaluacion implements Serializable {
 
 	
 
-		}
-	}
-
-	
-
-	
-	}
-
-	public Evaluacion(String eva_pregunta, int eva_opcion, String eva_detalle) {
 		
-		this.eva_pregunta = pregunta;
-		this.eva_detalle = detalle;
-        this. eva_opcion= opcion;
-		
-	}
+	
 
 	
 
@@ -54,9 +41,6 @@ public class Evaluacion implements Serializable {
 	
 
 	
-
-	}
-
 	public String eva_pregunta() {
 		return eva_pregunta;
 	}
@@ -66,32 +50,26 @@ public class Evaluacion implements Serializable {
 	}
 
 
-	public String eva_opcion() {
-		return eva_opcion;
-	}
-
-	protected void seteva_opcion(String eva_opcion) {
-
 	public int eva_opcion() {
 		return eva_opcion;
 	}
 
+	
 	protected void seteva_opcion(int eva_opcion) {
 
 		this.eva_opcion = eva_opcion;
-	
+	}
 	
 	
 	public String eva_detalle() {
 		return eva_detalle;
-	}
-
+	
+}
 	protected void seteva_detalle(String eva_detalle) {
 		this.eva_detalle = eva_detalle;
-	
-	
-
-
-
+	}
 
 }
+
+
+

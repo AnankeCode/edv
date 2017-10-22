@@ -1,4 +1,4 @@
-package io.pivotal.microservices.exceptions;
+package co.edu.ananke.exceptions;
 
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.HttpStatus;
@@ -16,6 +16,6 @@ public class RecomendacionNotFoundException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
 	public RecomendacionNotFoundException(int recomendacionusu_numid) {
-		super("No such account: " + recomendacionusu-numid);
+		super("No such account: " + recomendacionusu_numid);
 	}
 }

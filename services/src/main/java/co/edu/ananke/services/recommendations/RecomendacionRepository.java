@@ -1,5 +1,6 @@
-package io.pivotal.microservices.accounts;
+package  co.edu.ananke.services.recommendations;
 
+import co.edu.ananke.services.dashboard.Usuarios;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -14,7 +15,7 @@ public interface RecomendacionRepository extends Repository<Usuarios, int> {
 
 	
 
-	public Recomendacion findByusu_numid(String Recomendacionusu_numid);
+	public Recomendacion findByusu_numid(int Recomendacionusu_numid);
 
 
 	public List<Usuarios> findByusu_tipoidContainingIgnoreCase(String partialUsuarios);

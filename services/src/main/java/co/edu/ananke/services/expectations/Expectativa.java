@@ -1,7 +1,6 @@
-package io.pivotal.microservices.accounts;
+package co.edu.ananke.services.expectations;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,8 +27,7 @@ public class Expectativa implements Serializable {
 	protected String exp_pregunta;
 
 	protected int exp_id;
-
-
+        
 	@Column(name = "Expectativa")
 	protected String usu_tipoid;
 
@@ -37,25 +35,22 @@ public class Expectativa implements Serializable {
 
 	
     private int exp_opcion;
+    private String exp_detalle;
     
 
 	
 
-	public Expectativa(int exp_opcion , String exp_pregunta , String exp_detalle) {
-		
-		this.exp_pregunta = pregunta;
-		this.exp_opcion = opcion;
-		this.exp_detalle = detalle;
-
-	}
+	
 
 	
 
-	public String getexp_id() {
+	
+
+	public int getexp_id() {
 		return exp_id;
 	}
 
-	protected void setexp_id(String exp_id) {
+	protected void setexp_id(int exp_id) {
 		this.exp_id = exp_id;
 	}
 
@@ -85,5 +80,5 @@ public class Expectativa implements Serializable {
 	
 
 
-}
+
 	}

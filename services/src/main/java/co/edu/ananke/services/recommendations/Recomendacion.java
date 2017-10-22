@@ -1,7 +1,6 @@
-package io.pivotal.microservices.accounts;
+package  co.edu.ananke.services.recommendations;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,17 +37,12 @@ public class Recomendacion implements Serializable {
 
 	
 	
-	}
+	
 
 	
 	
 
-	public Recomendacion(String rec_detalle, int rec_id) {
-		
-		this.rec_detalle = detalle ;
-		this.rec_id = id;
-		
-	}
+	
 
 	
 
@@ -64,7 +58,7 @@ public class Recomendacion implements Serializable {
 		return rec_id;
 	}
 
-	protected void setrec_id(String rec_id) {
+	protected void setrec_id(int rec_id) {
 		this.rec_id = rec_id;
 	}
 

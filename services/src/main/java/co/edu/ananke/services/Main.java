@@ -1,4 +1,4 @@
-package io.pivotal.microservices.services;
+package co.edu.ananke.services;
 
 import io.pivotal.microservices.services.accounts.AccountsServer;
 import io.pivotal.microservices.services.registration.RegistrationServer;

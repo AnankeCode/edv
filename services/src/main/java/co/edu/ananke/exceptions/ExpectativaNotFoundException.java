@@ -1,4 +1,4 @@
-package io.pivotal.microservices.exceptions;
+package co.edu.ananke.exceptions;
 
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.HttpStatus;
@@ -18,4 +18,8 @@ public class ExpectativaNotFoundException extends RuntimeException {
 	public ExpectativaNotFoundException(int expectativausu_numid) {
 		super("No such account: " + expectativausu_numid);
 	}
+
+    public ExpectativaNotFoundException(String expectativausu_numid) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
