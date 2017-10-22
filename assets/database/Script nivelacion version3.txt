@@ -1,0 +1,163 @@
+------------------------------------------------------------------------------------------------------------------------------------
+Creacion de tablas.
+------------------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE USUARIOS
+(usu_tipoid   VARCHAR2 (3) NOT NULL ,
+ usu_numid    VARCHAR2 (15) NOT NULL,
+ usu_nombre   VARCHAR2 (50) NOT NULL,
+ usu_correo   VARCHAR2 (50) NOT NULL ,
+ usu_telefono NUMBER (20),
+ usu_celular  NUMBER (20))
+tablespace users
+storage (initial 1M next 1M pctincrease 0)
+/
+
+CREATE TABLE NIVELACION
+(niv_id              NUMBER (2) NOT NULL ,
+ niv_pregunta        VARCHAR2 (200) NOT NULL ,
+ niv_opcion	     VARCHAR2 (2),
+ niv_detalle         VARCHAR2 (100))
+tablespace users
+storage (initial 1M next 1M pctincrease 0)
+/
+
+CREATE TABLE EVALUACION
+(eva_id              NUMBER (2) NOT NULL,
+ eva_pregunta        VARCHAR2 (200) NOT NULL,
+ eva_opcion	     VARCHAR2 (2),
+ eva_detalle         VARCHAR2 (100))
+tablespace users
+storage (initial 1M next 1M pctincrease 0)
+/
+
+CREATE TABLE EXPECTATIVA
+(exp_id              NUMBER (2) NOT NULL ,
+ exp_pregunta        VARCHAR2 (200) NOT NULL ,
+ exp_opcion	     VARCHAR2 (2),
+ exp_detalle         VARCHAR (100)) 
+tablespace users
+storage (initial 1M next 1M pctincrease 0)
+/
+
+CREATE TABLE RECOMENDACION
+(rec_id		    NUMBER (2) NOT NULL,
+ rec_detalle	    VARCHAR2 (200) NOT NULL,
+ rec_encabezado	    VARCHAR2 (200) NOT NULL)
+tablespace users
+storage (initial 1M next 1M pctincrease 0)
+/
+
+
+CREATE TABLE USUA_X_NIVEL
+(uxn_usu_numid varchar2 (15) not null,
+ uxn_niv_id number (2) not null,
+ uxn_niv_opcion varchar2 (2) not null)
+tablespace users
+storage (initial 1M next 1M pctincrease 0)
+/
+
+CREATE TABLE USUA_X_EVALU
+(uxe_usu_numid varchar2 (15) not null,
+ uxe_eva_id number (2) not null,
+ uxe_eva_opcion varchar2 (2) not null)
+tablespace users
+storage (initial 1M next 1M pctincrease 0)
+/
+
+
+CREATE TABLE USUA_X_EXPEC
+(uxe_usu_numid varchar2 (15) not null,
+ uxe_exp_id number (2) not null,
+ uxe_exp_opcion varchar2 (2) not null)
+tablespace users
+storage (initial 1M next 1M pctincrease 0)
+/
+
+
+
+CREATE UNIQUE INDEX EXPECTATIVA__IDX ON EXPECTATIVA
+  (
+    USUARIOS_usu_correo ASC , USUARIOS_usu_celular ASC
+  )
+  ;
+CREATE UNIQUE INDEX EXPECTATIVA__IDX ON EXPECTATIVA
+  (
+    usu_tipoid ASC , usu_numid ASC
+  )
+  ;
+
+CREATE UNIQUE INDEX NIVELACION__IDX ON NIVELACION
+  (
+    USUARIOS_usu_correo ASC , USUARIOS_usu_celular ASC
+  )
+  ;
+CREATE UNIQUE INDEX NIVELACION__IDX ON NIVELACION
+  (
+    usu_tipoid ASC , usu_numid ASC
+  )
+  ;
+
+CREATE UNIQUE INDEX RECOMENDACION__IDX ON RECOMENDACION
+  (
+    USUARIOS_usu_correo ASC , USUARIOS_usu_celular ASC
+  )
+  ;
+CREATE UNIQUE INDEX RECOMENDACION__IDX ON RECOMENDACION
+  (
+    usu_tipoid ASC , usu_numid ASC
+  )
+  ;
+
+
+
+ALTER TABLE EVALUACION ADD CONSTRAINT EVALUACION_USURIOS_FK FOREIGN KEY ( usu_tipoid, usu_numid ) REFERENCES USUARIOS ( usu_tipoid, usu_numid ) ;
+
+ALTER TABLE EXPECTATIVA ADD CONSTRAINT EXPECTATIVA_USURIOS_FK FOREIGN KEY ( usu_tipoid, usu_numid ) REFERENCES USUARIOS ( usu_tipoid, usu_numid ) ;
+
+ALTER TABLE NIVELACION ADD CONSTRAINT NIVELACION_USURIOS_FK FOREIGN KEY ( usu_tipoid, usu_numid ) REFERENCES USUARIOS ( usu_tipoid, usu_numid ) ;
+
+ALTER TABLE RECOMENDACION ADD CONSTRAINT RECOMENDACION_USURIOS_FK FOREIGN KEY ( usu_tipoid, usu_numid ) REFERENCES USUARIOS ( usu_tipoid, usu_numid ) ;
+
+
+-- Informe de Resumen de Oracle SQL Developer Data Modeler: 
+-- 
+-- CREATE TABLE                             5
+-- CREATE INDEX                             8
+-- ALTER TABLE                              9
+-- CREATE VIEW                              0
+-- ALTER VIEW                               0
+-- CREATE PACKAGE                           0
+-- CREATE PACKAGE BODY                      0
+-- CREATE PROCEDURE                         0
+-- CREATE FUNCTION                          0
+-- CREATE TRIGGER                           0
+-- ALTER TRIGGER                            0
+-- CREATE COLLECTION TYPE                   0
+-- CREATE STRUCTURED TYPE                   0
+-- CREATE STRUCTURED TYPE BODY              0
+-- CREATE CLUSTER                           0
+-- CREATE CONTEXT                           0
+-- CREATE DATABASE                          0
+-- CREATE DIMENSION                         0
+-- CREATE DIRECTORY                         0
+-- CREATE DISK GROUP                        0
+-- CREATE ROLE                              0
+-- CREATE ROLLBACK SEGMENT                  0
+-- CREATE SEQUENCE                          0
+-- CREATE MATERIALIZED VIEW                 0
+-- CREATE SYNONYM                           0
+-- CREATE TABLESPACE                        0
+-- CREATE USER                              0
+-- 
+-- DROP TABLESPACE                          0
+-- DROP DATABASE                            0
+-- 
+-- REDACTION POLICY                         0
+-- TSDP POLICY                              0
+-- 
+-- ORDS DROP SCHEMA                         0
+-- ORDS ENABLE SCHEMA                       0
+-- ORDS ENABLE OBJECT                       0
+-- 
+-- ERRORS                                   0
+-- WARNINGS                                 0
