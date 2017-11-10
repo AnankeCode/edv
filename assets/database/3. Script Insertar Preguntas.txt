@@ -1,0 +1,21 @@
+INSERT INTO PREGUNTAS (pre_id, pre_detalle) 
+VALUES 
+(1, '¿Que es Windows?'),
+(2, '¿Cuál crees que es la señal principal de que un disco duro se está deteriorando?'),
+(3, '¿La aplicación Notepad o Block de Notas es?'),
+(4, '¿Que atajo de teclas usamos para cerrar una ventana en Windows?'),
+(5, '¿De las siguientes opciones, usando el teclado cual es la combinación de teclas para ir al explorador de Windows'),
+(6, '¿Que significa Encriptar?'),
+(7, '¿Que es hardware?'),
+(8, '¿Tres valores que deben estar configurados para permitir que un PC pueda conectarse con una red?'),
+(9, '¿Donde se puede averiguar la ip de un equipo, y cuál es el comando?'),
+(10, '¿Cuáles de los siguientes son sistemas operativos?'),
+(11, '¿Cuales son lenguajes de programación?'),
+(12, '¿Cuales de estas son unidades de medidas en informatica?'),
+(13, '¿Que es un Backup?'),
+(14, '¿Cuales son las teclas de atajo usadas en este mismo orden para: Cortar, Copiar y Pegar?'),
+(15, '¿Cuales son las teclas de atajo usadas para borrar un archivo definitivamente sin que vaya a la papelera de reciclaje?'),
+(16, '¿Cual es el procedimiento usado para crear una carpeta en Windows?'),
+(17, '¿Actualmente Linux es el sistema operativo predominante en el mundo de los smartphones?'),
+(18, '¿Cual es el procedimiento para ver los archivos ocultos de un sistema operativo?');
+

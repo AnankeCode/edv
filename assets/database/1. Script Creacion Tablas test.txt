@@ -1,0 +1,58 @@
+CREATE table Usuarios 
+(
+ usu_tipoid varchar(4) not null,
+ usu_numid varchar(15) not null,
+ usu_nombre varchar(50) not null,
+ usu_telefono int(20),
+ usu_celular int(20),
+ constraint pk_usuarios PRIMARY KEY (usu_numid)
+) engine = InnoDB;
+
+CREATE TABLE PREGUNTAS
+(pre_id              int(3) NOT NULL ,
+ pre_detalle         VARCHAR(200) NOT NULL)
+engine = InnoDB;
+
+CREATE TABLE EXPECTATIVA
+(exp_id              int(3) NOT NULL,
+ exp_detalle         VARCHAR(200) NOT NULL) 
+engine = InnoDB;
+
+
+CREATE TABLE RECOMENDACION
+(rec_id		    int(3) NOT NULL,
+ rec_detalle	    VARCHAR(200) NOT NULL,
+ rec_encabezado	    VARCHAR(200) NOT NULL)
+engine = InnoDB;
+
+CREATE TABLE RESPREGUNTAS
+(resp_id		    int(3) NOT NULL,
+ resp_detalle		    VARCHAR(200) NOT NULL,
+ resp_preid		    int(3) NOT NULL,
+ resp_escogida		    VARCHAR(3))
+engine = InnoDB;
+
+
+CREATE TABLE RESEXPECTATIVA
+(rese_id		    int(3) NOT NULL,
+ rese_detalle		    VARCHAR(200) NOT NULL,
+ rese_expid		    int(3) NOT NULL,
+ rese_escogida		    VARCHAR(3))
+engine = InnoDB;
+
+CREATE TABLE USU_X_EXP
+(uxe_usunumid varchar(15),
+ uxe_resexpid int(3),
+ uxe_resescogida varchar(3))
+engine = InnoDB;
+
+CREATE TABLE USU_X_RES
+(uxr_usunumid varchar(15),
+ uxr_respreid int(3),
+ uxr_resescogida varchar(3))
+engine = InnoDB;
+
+CREATE TABLE USU_X_RECO
+(uxr_recid int(3),
+ uxr_numid varchar(15))
+engine = InnoDB;
