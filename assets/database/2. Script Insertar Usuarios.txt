@@ -1,0 +1,9 @@
+insert into usuarios (usu_tipoid,usu_numid,usu_nombre, usu_telefono,usu_correo)
+values 
+('CC','1000310201201','Francisco', 310201201,'fzea@gmail.com'),
+('CC','2000311201201','Valentina', 311201201,'Valentina Zea@yahoo.com'),
+('CC','3000312201201','Maria Fernanda', 312201201,'mariafernandaurrego@yahoo.com'),
+('TI','4000313201201','Lorenzo', 313201201,'lorenzourrego@yahoo.com'),
+('CE','1018507596','Santiago', 314201201,'santipurdy14@gmail.com'),
+('CE','6000315201201','Roberto', 315201201,'robertopolo@yahoo.com'),
+('TI','10003335610','Erika Blanco', 316201201,'erika.tatiana@hotmail.com');

@@ -1,0 +1,9 @@
+INSERT INTO RECOMENDACION (rec_id, rec_detalle, rec_encabezado) 
+VALUES
+(1, 'Cuatro horas  diarias de estudio personal', 'Disponibilidad de Tiempo'),
+(2, 'Se sugiere al estudiante dedicar al menos 2 Horas diarias para consolidación de conocimiento', 'Disponibilidad de Tiempo'),
+(1, 'Accesso a Internet Banda Ancha', 'Recursos Tecnicos'),
+(2, 'Equipo de cómputo en casa, con el fin de realizar laboratorios después de clases', 'Recursos Tecnicos');
+
+
+

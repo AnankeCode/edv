@@ -1,0 +1,7 @@
+INSERT INTO EXPECTATIVA (exp_id, exp_detalle) 
+VALUES 
+(1, 'Una vez terminada la carrera como Técnico en Desarrollo de Software cuál es su aspiración salarial?'),
+(2, 'Al finalizar la carrera cual sería la expectativa más cercana a sus metas?'),
+(3, 'Cree que esta carrera tendrá un impacto en su vida diaria?'),
+(4, 'Que apoyo espera por parte de Ananke para su educación?');
+
